@@ -1,0 +1,22 @@
+		*0100
+		jmp main
+start, 	'a'			/ starting loop value
+end, 	-'z'		/ last loop value
+letter, .-.			/ count control loop
+newline, '\n'
+main,	cla
+		tad start	/ set start of loop
+		dca letter
+		
+loop,	tad letter  / print letter
+		tls
+		iac			/ bump letter
+		dca letter  
+		tad end		/ done?
+		tad letter
+		spa sna cla / not negative AND not zero
+		jmp loop
+		tad newline / print a newline
+		tls
+		hlt
+		
